@@ -1,7 +1,6 @@
 package com.codewithmosh.store.services;
 
-import com.codewithmosh.store.entities.Address;
-import com.codewithmosh.store.entities.User;
+import com.codewithmosh.store.entities.*;
 import com.codewithmosh.store.repositories.AddressRepository;
 import com.codewithmosh.store.repositories.ProfileRepository;
 import com.codewithmosh.store.repositories.UserRepository;
@@ -10,6 +9,8 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+
 @AllArgsConstructor
 @Service
 public class UserService {
@@ -17,6 +18,8 @@ public class UserService {
     private final ProfileRepository profileRepository;
     private final EntityManager entityManager;
     private final AddressRepository addressRepository;
+    private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
 
     @Transactional
     public void showEntityStates() {
@@ -76,5 +79,11 @@ public class UserService {
         var address = user.getAddresses().getFirst();
         user.removeAddress(address);
         userRepository.save(user);
+    }
+
+    @Transactional
+    public void manageProducts() {
+        productRepository.deleteById(4L);
+
     }
 }
