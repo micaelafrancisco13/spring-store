@@ -2,6 +2,7 @@ package com.codewithmosh.store.entities;
 
 import com.codewithmosh.store.dtos.ProductSummary;
 import com.codewithmosh.store.dtos.ProductSummaryDTO;
+import com.codewithmosh.store.repositories.ProductCriteriaRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -12,7 +13,7 @@ import org.springframework.data.repository.query.Param;
 import java.math.BigDecimal;
 import java.util.List;
 
-public interface ProductRepository extends JpaRepository<Product, Long> {
+public interface ProductRepository extends JpaRepository<Product, Long>, ProductCriteriaRepository {
   // String
   List<Product> findByName(String name);
   List<Product> findByNameLike(String name);
