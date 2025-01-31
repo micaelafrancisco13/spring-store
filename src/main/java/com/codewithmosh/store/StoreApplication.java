@@ -13,7 +13,7 @@ public class StoreApplication {
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(StoreApplication.class, args);
         var service =  context.getBean(UserService.class);
-        service.fetchProductsBySpecifications("prod", BigDecimal.valueOf(1), null);
+        service.fetchPaginatedProducts(0, 10);
 
     }
 }
